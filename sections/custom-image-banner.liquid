@@ -1,0 +1,245 @@
+<style>
+.custom-banner-{{ section.id }} {
+  position: relative;
+  text-align: center;
+  padding: 0;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-content {
+  position: relative;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-text {
+  padding: 1rem 0rem 0rem;
+  max-width: 40%;
+  color: black;
+}
+.custom-banner-{{ section.id }} .heading {
+  font-size: 70px;
+  font-weight: 700;
+  color: black;
+  margin: 0 0 50px;
+}
+.custom-banner-{{ section.id }} .description {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  margin: 0 0 50px;
+  line-height: normal;
+}
+.custom-banner-{{ section.id }} .text-left {
+  text-align: left;
+}
+.custom-banner-{{ section.id }} .text-center {
+  text-align: center;
+}
+.custom-banner-{{ section.id }} .text-right {
+  text-align: right;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 1.5rem 1.5rem;
+  background: linear-gradient(to left, black 50%, #FFF544 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 220px;
+  width: 100%;
+  text-transform: uppercase;
+  transition: background-position 0.3s ease, color 0.3s ease;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-button:hover {
+  background-position: left bottom;
+  color: black;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-button svg path {
+  transition: fill 0.3s ease;
+}
+
+.custom-banner-{{ section.id }} .custom-banner-button:hover svg path {
+  fill: black;
+}
+
+.custom-banner-{{ section.id }} .image-with-text {
+  display: flex;
+  align-items: flex-start;
+}
+@media screen and (min-width: 1199px) and (max-width: 1439px) {
+  .custom-banner-{{ section.id }} .custom-banner-text {
+    padding: 1rem 0rem 0rem;
+    max-width: 50%;
+  }
+  .custom-banner-{{ section.id }} .custom-banner-image.image_text {
+    max-width: 50%;
+  }
+  .custom-banner-{{ section.id }} .image-with-text .heading {
+    margin-bottom: 20px;
+    font-size: 48px;
+  }
+  .custom-banner-{{ section.id }} .image-with-text .description {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 1199px) {
+  .custom-banner-{{ section.id }} .custom-banner-content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .custom-banner-{{ section.id }} .custom-banner-content .custom-banner-text {
+    text-align: center;
+    position: relative !important;
+    left: 0 !important;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 5.5rem;
+  }
+  .custom-banner-{{ section.id }} .heading {
+    font-size: 36px;
+  }
+  .custom-banner-{{ section.id }} .mobile-image-and-button {
+    position: relative;
+  }
+  .custom-banner-{{ section.id }} .custom-banner-button.mobile {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+  }
+}
+</style>
+
+<div class="custom-banner-{{ section.id }}">
+  <div class="custom-banner-content">
+    <img src="{{ section.settings.desktop_image | image_url }}" alt="Gift Guide Banner" class="custom-banner-image small-hide medium-hide">
+    <div class="mobile-image-and-button">
+      <img src="{{ section.settings.mobile_image | image_url }}" alt="Gift Guide Banner" class="custom-banner-image large-up-hide">
+        <a href="{{ section.settings.button_link }}" class="custom-banner-button mobile large-up-hide">
+          {{ section.settings.button_text }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="13" viewBox="0 0 28 13" fill="none">
+            <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="white"/>
+          </svg>
+        </a>
+    </div>
+
+      <div class="image-with-text">
+        <div class="custom-banner-text text-{{ section.settings.text_alignment }}" style="background-color: {{ section.settings.overlay_color }}">
+          <h2 class="heading">{{ section.settings.heading }}</h2>
+          <p class="description">{{ section.settings.subheading }}</p>
+          {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_link }}" class="custom-banner-button small-hide medium-hide">
+              {{ section.settings.button_text }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="13" viewBox="0 0 28 13" fill="none">
+                <path d="M1.11108 5.74402L0.361084 5.74402L0.361084 7.24402L1.11108 7.24402L1.11108 5.74402ZM27.1487 7.02435C27.4416 6.73146 27.4416 6.25658 27.1487 5.96369L22.3757 1.19072C22.0828 0.897826 21.6079 0.897826 21.315 1.19072C21.0221 1.48361 21.0221 1.95849 21.315 2.25138L25.5577 6.49402L21.315 10.7367C21.0221 11.0296 21.0221 11.5044 21.315 11.7973C21.6079 12.0902 22.0828 12.0902 22.3757 11.7973L27.1487 7.02435ZM1.11108 7.24402L26.6183 7.24402L26.6183 5.74402L1.11108 5.74402L1.11108 7.24402Z" fill="white"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      <img src="{{ section.settings.mobile_image | image_url }}" alt="Gift Guide Banner" class="custom-banner-image image_text small-hide medium-hide">
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function adjustBannerPadding() {
+      var windowWidth = window.innerWidth;
+
+      if (windowWidth > 768) {
+        var container = document.querySelector('.custom-container');
+        var bannerText = document.querySelector('.custom-banner-text');
+
+        if (container && bannerText) {
+          var offset = container.getBoundingClientRect().left + window.scrollX;
+          bannerText.style.paddingLeft = offset + 'px';
+        }
+      }
+    }
+
+    adjustBannerPadding();
+
+    window.addEventListener('resize', function () {
+      adjustBannerPadding();
+    });
+  });
+</script>
+
+              
+{% schema %}
+{
+  "name": "Custom Image Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Text Box Background",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

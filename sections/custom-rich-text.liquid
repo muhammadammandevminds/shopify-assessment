@@ -1,0 +1,109 @@
+<style>
+  .custom-richtext-{{ section.id }} {
+    background-color: {{ section.settings.BackgroundColorId }};
+    color: {{ section.settings.TextColorId }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    text-align: center;
+  }
+
+  .custom-richtext-{{ section.id }} .custom-text {
+    font-size: {{ section.settings.font_size_desktop }}px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .custom-richtext-{{ section.id }} .custom-text p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-richtext-{{ section.id }} .custom-text {
+      font-size: {{ section.settings.font_size_mobile }}px;
+    }
+  }
+
+  .custom-richtext-{{ section.id }} .custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+</style>
+
+<div class="custom-richtext-{{ section.id }}">
+  <div class="custom-container">
+    <div class="custom-text">
+      {{ section.settings.RichTextCustom }}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Custom Rich Text",
+    "settings": [
+      {
+        "type": "richtext",
+        "label": "Rich Text",
+        "id": "RichTextCustom"
+      },
+      {
+        "type": "range",
+        "id": "font_size_desktop",
+        "label": "Text Font Size For Desktop",
+        "default": 16,
+        "min": 0,
+        "max": 64,
+        "unit": "px",
+        "step": 2
+      },
+      {
+        "type": "range",
+        "id": "font_size_mobile",
+        "label": "Text Font Size For Mobile",
+        "default": 14,
+        "min": 0,
+        "max": 32,
+        "unit": "px",
+        "step": 2
+      },
+      {
+        "type": "color",
+        "label": "Text Color",
+        "id": "TextColorId"
+      },
+      {
+        "type": "color",
+        "label": "Background Color",
+        "id": "BackgroundColorId"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Section Padding Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "step": 2
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Section Padding Bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "unit": "px",
+        "step": 2
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Rich Text",
+        "category": "Custom" 
+      }
+    ]
+  }
+{% endschema %}
